@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="tl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#123b32">
+<title>Erf Care — E-commerce Monitoring</title>
+<style>
+:root{--green:#123b32;--green2:#176b52;--mint:#e7f4ef;--bg:#f3f6f5;--text:#172522;--muted:#63736e;--line:#dce5e1;--red:#b42318;--amber:#9a6700;--blue:#175cd3}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}header{background:var(--green);color:#fff;padding:16px 16px 18px;position:sticky;top:0;z-index:5;box-shadow:0 2px 8px #0002}.brand{display:flex;gap:10px;align-items:center}.logo{width:42px;height:42px;border:1px solid #ffffff55;border-radius:12px;display:grid;place-items:center;font-size:24px}.brand h1{font-size:21px;margin:0}.brand p{margin:0;color:#cce1d9;font-size:12px}.wrap{max-width:760px;margin:auto;padding:14px 12px 90px}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px;box-shadow:0 2px 7px #102d2410}.card h2{font-size:16px;margin:0 0 12px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{display:flex;flex-direction:column;gap:5px;min-width:0}.field.full{grid-column:1/-1}label{font-size:12px;font-weight:700;color:#42534d}input,select,textarea,button{font:inherit}input,select,textarea{width:100%;min-width:0;border:1px solid #cbd8d2;border-radius:10px;padding:11px;background:#fff;color:var(--text);outline-color:var(--green2)}textarea{resize:vertical;min-height:68px}.btn{border:0;border-radius:11px;padding:12px 14px;font-weight:750;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px}.primary{background:var(--green2);color:#fff}.secondary{background:var(--mint);color:var(--green)}.danger{background:#fee4e2;color:var(--red)}.outline{background:#fff;border:1px solid var(--line);color:var(--text)}.btn:disabled{opacity:.5;cursor:not-allowed}.actions{display:flex;gap:8px;flex-wrap:wrap}.actions .btn{flex:1}.scanbtn{width:100%;margin-top:12px;font-size:16px}.hint{color:var(--muted);font-size:12px;margin:8px 0 0}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:12px}.tab{border:1px solid var(--line);background:white;padding:10px 4px;border-radius:10px;font-weight:700;color:var(--muted)}.tab.active{background:var(--green);border-color:var(--green);color:white}.status{border-radius:10px;padding:11px 12px;margin:10px 0;font-weight:700;font-size:13px;display:none}.status.show{display:block}.status.ok{background:#dcfae6;color:#067647}.status.warn{background:#fef0c7;color:#93370d}.status.err{background:#fee4e2;color:#b42318}.cameraBox{display:none;margin-top:12px;background:#111;border-radius:14px;overflow:hidden;position:relative}.cameraBox.show{display:block}.cameraBox video{width:100%;max-height:340px;object-fit:cover}.camlabel{color:#fff;font-size:12px;padding:8px 10px}.record{border:1px solid var(--line);border-radius:12px;padding:12px;margin:8px 0;background:#fff}.recordtop{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.code{font-weight:800;overflow-wrap:anywhere}.meta{font-size:12px;color:var(--muted);margin-top:5px}.pill{display:inline-block;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:800;background:#e7f0ff;color:#1849a9;white-space:nowrap}.pill.Picking{background:#fff0d9;color:#8a4b00}.pill.Packing{background:#e7f0ff;color:#1849a9}.pill.Checking{background:#f4e8ff;color:#6941c6}.pill.Dispatch{background:#dcfae6;color:#067647}.small{font-size:12px;color:var(--muted)}.hidden{display:none!important}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:var(--mint);border-radius:12px;padding:10px}.stat strong{display:block;font-size:21px;color:var(--green)}.stat span{font-size:11px;color:var(--muted)}.empty{text-align:center;color:var(--muted);padding:22px 8px}.foot{font-size:11px;color:var(--muted);text-align:center;padding:10px}.modal{position:fixed;inset:0;background:#071a15a8;z-index:10;display:none;align-items:center;justify-content:center;padding:16px}.modal.show{display:flex}.modalbox{background:white;border-radius:16px;padding:18px;width:100%;max-width:430px;box-shadow:0 12px 40px #0004}.modalbox h2{color:var(--red);margin:0 0 8px}.modalcode{font-size:18px;font-weight:850;overflow-wrap:anywhere;padding:10px;background:#fff1f0;border-radius:9px;margin:10px 0}.divider{border:0;border-top:1px solid var(--line);margin:12px 0}.linkbtn{color:var(--green2);text-decoration:underline;cursor:pointer;font-size:13px;background:none;border:0;padding:0}
+@media(max-width:390px){.grid{grid-template-columns:1fr 1fr}.wrap{padding-left:9px;padding-right:9px}.card{padding:11px}.stats{gap:5px}.stat{padding:8px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><div class="logo">📦</div><div><h1>Erf Care</h1><p>E-commerce Transaction Monitoring</p></div></div></header>
+<main class="wrap">
+  <div class="tabs">
+    <button class="tab active" data-tab="scan">📷 Scan</button>
+    <button class="tab" data-tab="records">📋 Records</button>
+    <button class="tab" data-tab="export">⬇ Report</button>
+  </div>
+
+  <section id="scanPanel">
+    <div class="card">
+      <h2>Scan Setup</h2>
+      <div class="grid">
+        <div class="field"><label for="platform">Platform</label><select id="platform"><option>Shopee</option><option>Lazada</option><option>TikTok</option></select></div>
+        <div class="field"><label for="batch">Batch</label><select id="batch"><option>Batch 1</option><option>Batch 2</option><option>Batch 3</option><option>Batch 4</option></select></div>
+        <div class="field"><label for="stage">Scan stage</label><select id="stage"><option>Picking</option><option>Packing</option><option>Checking</option><option>Dispatch</option></select></div>
+        <div class="field"><label for="location">Location</label><select id="location"><option>Staging</option><option>Docking</option></select></div>
+        <div class="field"><label for="lane">Lane</label><select id="lane"><option>Lane 1</option><option>Lane 2</option><option>Lane 3</option><option>Lane 4</option><option>Lane 5</option><option>Lane 6</option><option>Lane 7</option><option>Lane 8</option></select></div>
+        <div class="field"><label for="worker">Scanned by</label><input id="worker" placeholder="Pangalan ng nag-scan" autocomplete="name"></div>
+        <div class="field full"><label for="notes">Notes</label><textarea id="notes" placeholder="Optional: kulang, damaged, mismatch..."></textarea></div>
+      </div>
+      <div class="field full" style="margin-top:12px"><label for="manualCode">Waybill barcode / QR number</label><input id="manualCode" placeholder="I-scan gamit ang camera o i-type dito" autocomplete="off"></div>
+      <div class="actions" style="margin-top:10px"><button class="btn primary" id="startCamera">📷 Open camera scanner</button><button class="btn secondary" id="submitManual">✓ Record scan</button></div>
+      <div id="cameraBox" class="cameraBox"><video id="video" playsinline muted></video><div class="camlabel">Iharap ang barcode/QR sa camera. Panatilihing maliwanag at steady.</div><div style="padding:8px"><button class="btn outline" id="stopCamera" style="width:100%">Stop camera</button></div></div>
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+      <p class="hint">Duplicate rule: bawal ang parehong waybill sa parehong stage kahit ibang batch, para maiwasan ang maling batch. Ang pag-scan sa susunod na stage ay pinapayagan. Ang record ay naka-save sa browser ng device na ito.</p>
+    </div>
+  </section>
+
+  <section id="recordsPanel" class="hidden">
+    <div class="card">
+      <h2>Scan Records</h2>
+      <div class="stats"><div class="stat"><strong id="totalCount">0</strong><span>Total scans</span></div><div class="stat"><strong id="uniqueCount">0</strong><span>Unique waybills</span></div><div class="stat"><strong id="pendingCount">0</strong><span>Needs checking</span></div></div>
+      <div class="grid" style="margin-top:12px">
+        <div class="field"><label for="filterBatch">Filter batch</label><select id="filterBatch"><option value="">All batches</option><option>Batch 1</option><option>Batch 2</option><option>Batch 3</option><option>Batch 4</option></select></div>
+        <div class="field"><label for="filterStage">Filter stage</label><select id="filterStage"><option value="">All stages</option><option>Picking</option><option>Packing</option><option>Checking</option><option>Dispatch</option></select></div>
+        <div class="field full"><label for="searchRecords">Search waybill / item / consignee</label><input id="searchRecords" placeholder="Type to search"></div>
+      </div>
+      <div id="recordList"></div>
+      <p class="hint">Ang records ay nakaayos mula sa pinakabago. Para may backup, regular na i-export ang report.</p>
+    </div>
+  </section>
+
+  <section id="exportPanel" class="hidden">
+    <div class="card">
+      <h2>Report & Backup</h2><p class="hint">Kasama sa report ang Item Description, Qty at Consignee Name para sa bawat waybill. I-import ang order CSV sa ibaba para ma-populate ang mga detalye.</p>
+      <p class="hint" style="margin-top:-4px">CSV ang pinakamadaling format para sa Excel at Google Sheets. Puwede itong i-download sa cellphone at i-attach sa email.</p>
+      <div class="grid" style="margin-top:12px">
+        <div class="field"><label for="dateFrom">From date</label><input id="dateFrom" type="date"></div>
+        <div class="field"><label for="dateTo">To date</label><input id="dateTo" type="date"></div>
+      </div>
+      <div class="actions" style="margin-top:12px"><button class="btn primary" id="exportCsv">⬇ Download CSV (Excel-compatible)</button><button class="btn secondary" id="shareCsv">✉ Share / Email CSV</button></div>
+      <hr class="divider">
+      <h2>Import order list CSV</h2>
+      <p class="hint">Ihanda ang CSV na may columns na <b>waybill, item description, qty, consignee</b>. Puwede rin ang headers na tracking number, item, quantity, recipient. Import ito para awtomatikong maitugma ang detalye kapag nag-scan.</p>
+      <input id="importFile" type="file" accept=".csv,text/csv">
+      <div id="importStatus" class="status" role="status"></div>
+      <div class="actions" style="margin-top:10px"><button class="btn outline" id="downloadTemplate">Download sample CSV template</button><button class="btn danger" id="clearData">Clear all local records</button></div>
+      <p class="hint">Paalala: walang awtomatikong access ang app sa Shopee/Lazada/TikTok orders. Kailangan ng order CSV o manual entry para makuha ang item description, qty at consignee. Ang clear ay hindi na maibabalik.</p>
+    </div>
+  </section>
+  <div class="foot">Erf Care · Mobile-first warehouse scan log · Keep a daily backup</div>
+</main>
+
+<div id="dupModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="dupTitle">
+ <div class="modalbox">
+  <h2 id="dupTitle">⚠ DUPLICATE SCAN!</h2>
+  <p>Na-scan na ang waybill na ito sa stage na ito. Hindi ito idinagdag ulit. Suriin kung tama ang batch.</p>
+  <div id="dupCode" class="modalcode"></div>
+  <div id="dupInfo" class="small"></div>
+  <div class="actions" style="margin-top:16px"><button class="btn danger" id="closeDup" style="width:100%">OK, naiintindihan ko</button></div>
+ </div>
+</div>
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const STORE='erfcare_records_v1', ORDERS='erfcare_orders_v1';
+let records=load(STORE,[]), orders=load(ORDERS,{}), stream=null, scanLoop=null, lastSeen='', lastSeenAt=0;
+function load(key, fallback){try{return JSON.parse(localStorage.getItem(key)) ?? fallback}catch{return fallback}}
+function save(){localStorage.setItem(STORE,JSON.stringify(records));localStorage.setItem(ORDERS,JSON.stringify(orders));}
+function today(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+$('dateFrom').value=today();$('dateTo').value=today();
+function showStatus(message,type='ok',target='status'){const el=$(target);el.textContent=message;el.className='status show '+type;setTimeout(()=>{if(el.textContent===message)el.className='status'},6000)}
+function norm(s){return String(s??'').trim().replace(/\s+/g,'').toUpperCase()}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function orderFor(code){return orders[norm(code)]||{}}
+function duplicate(code,batch,stage){return records.find(r=>norm(r.waybill)===norm(code)&&r.stage===stage)}
+function recordScan(raw){
+ const code=String(raw||'').trim(); if(!code){showStatus('I-scan o ilagay muna ang waybill barcode/QR number.','warn');return false}
+ const worker=$('worker').value.trim();if(!worker){showStatus('Ilagay muna ang pangalan ng nag-scan.','warn');$('worker').focus();return false}
+ const batch=$('batch').value,stage=$('stage').value;
+ const prior=duplicate(code,batch,stage);
+ if(prior){$('dupCode').textContent=code;$('dupInfo').textContent=`${prior.platform} · ${prior.batch} · ${prior.stage} · ${prior.location} · ${prior.lane} · ${prior.scannedBy} · ${prior.timestamp}`;$('dupModal').classList.add('show');return false}
+ const od=orderFor(code);
+ const row={id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),waybill:code,platform:$('platform').value,batch,stage,location:$('location').value,lane:$('lane').value,scannedBy:worker,notes:$('notes').value.trim(),itemDescription:od.itemDescription||'',qty:od.qty||'',consignee:od.consignee||'',timestamp:new Date().toISOString()};
+ records.unshift(row);save();renderRecords();showStatus('Scan recorded: '+code,'ok');
+ $('manualCode').value='';$('notes').value='';$('manualCode').focus();return true;
+}
+$('submitManual').addEventListener('click',()=>recordScan($('manualCode').value));
+$('manualCode').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();recordScan($('manualCode').value)}});
+$('closeDup').onclick=()=>$('dupModal').classList.remove('show');
+document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b===btn));
+ ['scan','records','export'].forEach(t=>$(t+'Panel').classList.toggle('hidden',t!==btn.dataset.tab));
+ if(btn.dataset.tab==='records')renderRecords();if(btn.dataset.tab==='export')stopCamera();
+}));
+function renderRecords(){
+ const b=$('filterBatch').value,s=$('filterStage').value,q=$('searchRecords').value.toLowerCase();
+ const rows=records.filter(r=>(!b||r.batch===b)&&(!s||r.stage===s)&&[r.waybill,r.itemDescription,r.consignee,r.scannedBy,r.notes].join(' ').toLowerCase().includes(q));
+ $('totalCount').textContent=records.length;$('uniqueCount').textContent=new Set(records.map(r=>norm(r.waybill))).size;
+ const latest={};records.forEach(r=>{if(!latest[norm(r.waybill)]||new Date(r.timestamp)>new Date(latest[norm(r.waybill)].timestamp))latest[norm(r.waybill)]=r});
+ $('pendingCount').textContent=Object.values(latest).filter(r=>r.stage!=='Dispatch').length;
+ $('recordList').innerHTML=rows.length?rows.map(r=>`<div class="record"><div class="recordtop"><div><div class="code">${esc(r.waybill)}</div><div class="meta">${esc(r.platform)} · ${esc(r.batch)} · ${esc(r.location)} · ${esc(r.lane)}</div></div><span class="pill ${esc(r.stage)}">${esc(r.stage)}</span></div><div style="margin-top:8px"><b>${esc(r.itemDescription||'Item details not provided')}</b> ${r.qty?`· Qty ${esc(r.qty)}`:''}</div><div class="meta">Consignee: ${esc(r.consignee||'—')}<br>Scanned by: ${esc(r.scannedBy)} · ${esc(new Date(r.timestamp).toLocaleString())}${r.notes?'<br>Notes: '+esc(r.notes):''}</div></div>`).join(''):'<div class="empty">Wala pang record na tumutugma sa filter.</div>';
+}
+['filterBatch','filterStage','searchRecords'].forEach(id=>$(id).addEventListener(id==='searchRecords'?'input':'change',renderRecords));
+function csvCell(v){let s=String(v??'');if(/^[=+\-@]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'}
+function filteredForExport(){const from=$('dateFrom').value,to=$('dateTo').value;return records.filter(r=>{const d=r.timestamp.slice(0,10);return(!from||d>=from)&&(!to||d<=to)})}
+function csvText(rows){const headers=['Waybill / Barcode','Platform','Batch','Scan Stage','Location','Lane','Scanned By','Timestamp','Item Description','Qty','Consignee Name','Notes'];return '\ufeff'+[headers,...rows.map(r=>[r.waybill,r.platform,r.batch,r.stage,r.location,r.lane,r.scannedBy,r.timestamp,r.itemDescription,r.qty,r.consignee,r.notes])].map(row=>row.map(csvCell).join(',')).join('\r\n')}
+function download(name,content,type='text/csv;charset=utf-8'){const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+$('exportCsv').onclick=()=>{const rows=filteredForExport();download(`ErfCare_Report_${today()}.csv`,csvText(rows));showStatus(`Na-download ang CSV report (${rows.length} records).`,'ok','importStatus')};
+$('shareCsv').onclick=async()=>{const rows=filteredForExport(),blob=new Blob([csvText(rows)],{type:'text/csv;charset=utf-8'}),file=new File([blob],`ErfCare_Report_${today()}.csv`,{type:'text/csv'});try{if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({title:'Erf Care Report',text:'Attached ang Erf Care scan report.',files:[file]})}else{download(file.name,csvText(rows));location.href='mailto:?subject='+encodeURIComponent('Erf Care Report '+today())+'&body='+encodeURIComponent('Attached/attach the downloaded Erf Care CSV report before sending.');}}catch(e){if(e.name!=='AbortError')showStatus('Hindi nabuksan ang share menu. I-download ang CSV at i-attach ito sa email.','warn','importStatus')}};
+$('downloadTemplate').onclick=()=>download('ErfCare_Order_Template.csv','\ufeffwaybill,item description,qty,consignee\r\nSPX123456789,Wireless earphones,2,Juan Dela Cruz\r\n','text/csv;charset=utf-8');
+function parseCSV(text){const rows=[];let row=[],cell='',quoted=false;for(let i=0;i<text.length;i++){const c=text[i];if(quoted){if(c==='"'&&text[i+1]==='"'){cell+='"';i++}else if(c==='"')quoted=false;else cell+=c}else{if(c==='"')quoted=true;else if(c===','){row.push(cell);cell=''}else if(c==='\n'){row.push(cell.replace(/\r$/,''));rows.push(row);row=[];cell=''}else cell+=c}}if(cell.length||row.length){row.push(cell.replace(/\r$/,''));rows.push(row)}return rows.filter(r=>r.some(c=>c.trim()))}
+function keyHeader(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]/g,'')}
+$('importFile').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const rows=parseCSV(await f.text());if(rows.length<2)throw Error('Walang data rows sa CSV.');const h=rows[0].map(keyHeader);const idx=names=>h.findIndex(v=>names.includes(v));const wi=idx(['waybill','trackingnumber','trackingno','barcode','qr','trackingid']),ii=idx(['itemdescription','item','product','productname','description']),qi=idx(['qty','quantity','itemqty']),ci=idx(['consignee','consigneename','recipient','recipientname','customername']);if(wi<0)throw Error('Hindi makita ang waybill column. Gamitin ang template na puwedeng i-download.');let n=0;for(const row of rows.slice(1)){const code=norm(row[wi]);if(!code)continue;orders[code]={itemDescription:ii>=0?(row[ii]||''):'',qty:qi>=0?(row[qi]||''):'',consignee:ci>=0?(row[ci]||''):''};n++}save();showStatus(`Na-import ang ${n} order details. Sa susunod na scan, itutugma ang waybill sa order list.`,'ok','importStatus')}catch(err){showStatus(err.message||'Hindi mabasa ang CSV.','err','importStatus')}e.target.value=''});
+$('clearData').onclick=()=>{if(confirm('Sigurado ka bang buburahin ang lahat ng scan records at imported order details sa browser na ito? Hindi ito maibabalik.')){records=[];orders={};save();renderRecords();showStatus('Na-clear ang local data.','ok','importStatus')}};
+async function startCamera(){
+ stopCamera();
+ if(!navigator.mediaDevices?.getUserMedia){showStatus('Hindi suportado ang camera sa browser na ito. Gumamit ng HTTPS at updated browser, o i-type ang waybill.','err');return}
+ try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false});$('video').srcObject=stream;$('cameraBox').classList.add('show');await $('video').play();showStatus('Camera ready. Itapat ang code sa camera.','ok');scanLoop=setInterval(scanFrame,300)}catch(e){showStatus('Hindi mabuksan ang camera. Payagan ang camera permission at gumamit ng HTTPS website. Maaari ring i-type ang barcode.','err')}
+}
+function stopCamera(){if(scanLoop){clearInterval(scanLoop);scanLoop=null}if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}$('cameraBox').classList.remove('show')}
+async function scanFrame(){
+ const v=$('video');if(!stream||v.readyState<2||!v.videoWidth)return;
+ if('BarcodeDetector'in window){try{if(!window._erfDetector)window._erfDetector=new BarcodeDetector({formats:['qr_code','code_128','code_39','ean_13','ean_8','upc_a','upc_e','itf','codabar','data_matrix','pdf417']});const codes=await window._erfDetector.detect(v);if(codes.length){const code=codes[0].rawValue,now=Date.now();if(code&&!(code===lastSeen&&now-lastSeenAt<2500)){lastSeen=code;lastSeenAt=now;$('manualCode').value=code;recordScan(code)}}}catch(e){}}
+ else {showStatus('Ang browser na ito ay walang built-in barcode detector. I-type ang waybill o buksan ang app sa supported Chrome browser.','warn')}
+}
+$('startCamera').onclick=startCamera;$('stopCamera').onclick=stopCamera;
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stopCamera()});
+window.addEventListener('beforeunload',stopCamera);
+renderRecords();
+})();
+</script>
+</body>
+</html>
